@@ -2,28 +2,22 @@ const User = require('../models/user')
 const config = require('../config/global')
 
 exports.crearUsuario = async (req, res) => {
-    try{
+    try {
+        const { username, email, password } = req.body;
         
-        /*const { username, email, password } = req.body
-        console.log(username, email, password)
-        res.send('Usuario Creado')*/
-
-        const { username, email, password } = req.body
-        const user = new User({
-            username,
-            email,
-            password
-        })
-
-        user.password = await user.encryptPassword(user.password)
-
-        await user.save()
+        const user = new User({ username, email, password });
         
-        res.json({auth: true})
+        user.password = await user.encryptPassword(user.password);
+        console.log("Contraseña encriptada:", user.password);
+        
+        await user.save();
+        console.log("Usuario guardado en MongoDB");
 
-    }catch(error){
-        console.log(error)
-        res.status(500).send('Hubo un error al crear usuario')
+        res.json({ auth: true });
+
+    } catch (error) {
+        console.error("Error al crear usuario:", error);
+        res.status(500).send("Hubo un error al crear usuario");
     }
 }
 
