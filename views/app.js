@@ -64,12 +64,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         } catch (error) {
         console.error('Error:', error);
-        alert('Error al iniciar sesión');
+        alert('Error al iniciar sesión xd');
         }
-    }    
+    }
 
   });
-
-
-
-  
