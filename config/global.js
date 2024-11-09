@@ -1,4 +1,4 @@
 module.exports = {
     secret: 'mysecrettext',
-    port: 3000
+    port: 3001
 }

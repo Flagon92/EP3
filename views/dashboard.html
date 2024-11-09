@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="style.css">
-
+    <script type="module" src="acces.js"></script>
 </head>
+
 <body>
     <main>
         <div class="sidebar">
@@ -27,11 +29,17 @@
             </ul>
         </div>
         <div class="content">
-            <h2>Bienvenido al Dashboard</h2>
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+                <h2>Bienvenido al Dashboard <span id="username" style="color: blue;"></span></h2>
+                <button id="cerrar-sesion"
+                    style="width: 7rem; height: 3rem; background-color: red; color: white; font-weight: bold; cursor: pointer;">Cerrar
+                    Sesion</button>
+            </div>
             <hr>
         </div>
     </main>
 
-    
+
 </body>
+
 </html>

@@ -1,13 +1,7 @@
 const User = require('../models/user')
-const config = require('../config/global')
 
 exports.crearUsuario = async (req, res) => {
     try{
-        
-        /*const { username, email, password } = req.body
-        console.log(username, email, password)
-        res.send('Usuario Creado')*/
-
         const { username, email, password } = req.body
         const user = new User({
             username,
@@ -19,7 +13,7 @@ exports.crearUsuario = async (req, res) => {
 
         await user.save()
         
-        res.json({auth: true})
+        return res.json({user: username, email: email, password: password})
 
     }catch(error){
         console.log(error)
@@ -39,9 +33,10 @@ exports.obtenerUsuario = async (req, res) => {
         const validPassword = await user.validatePassword(password)
 
         if(!validPassword) return res.status(401).json({auth: false})
-
-        res.json({
+        return res.json({
             auth: true,
+            user: user.username,
+            email: user.email,
             encryptedPassword: user.password // Este es el hash encriptado de la contraseña
         });
 

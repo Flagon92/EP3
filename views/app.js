@@ -28,8 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const data = Object.fromEntries(formData.entries());
 
         try {
-        const response = await fetch('/api/signup', {
+        const response = await fetch('http://localhost:3001/api/register', {
             method: 'POST',
+            credentials: 'include',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
         });
@@ -37,10 +38,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!response.ok) throw new Error('Error en el registro');
 
         const result = await response.json();
-        console.log('Registro exitoso:', result);
+        document.cookie = `user=${JSON.stringify(result)}; SameSite=Strict; path=/`;
+        window.location.pathname = '/EP3/views/dashboard.html';
 
         } catch (error) {
-        console.error('Error:', error);
         alert('Error en el registro');
         }
     }
@@ -51,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const data = Object.fromEntries(formData.entries());
 
         try {
-        const response = await fetch('/api/login', {
+        const response = await fetch('http://localhost:3001/api/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
@@ -60,6 +61,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!response.ok) throw new Error('Error al iniciar sesión');
 
         const result = await response.json();
+        document.cookie = `user=${JSON.stringify(result)}; SameSite=Strict; path=/`;
+        window.location.pathname = '/EP3/views/dashboard.html';
         console.log('Inicio de sesión exitoso:', result);
 
         } catch (error) {
@@ -67,5 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
         alert('Error al iniciar sesión xd');
         }
     }
+    
 
   });

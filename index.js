@@ -7,12 +7,13 @@ const app = express()
 
 conectarDB()
 
-app.use(cors())
+app.use(cors({
+    origin: ['http://127.0.0.1:5500'],
+    credentials: true
+}))
 app.use(express.json())
 
-app.use('/api/create-user', require('./routes/usuario'))
-
-app.use('/api/login', require('./routes/usuario'))
+app.use('/api', require('./routes/usuario'))
 
 app.listen(config.port, () => {
     console.log('El servidor corriendo por el puerto 3000')
