@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         } catch (error) {
         console.error('Error:', error);
-        alert('Error al iniciar sesión xd');
+        alert('Error al iniciar sesión');
         }
     }
     
