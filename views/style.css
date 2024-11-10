@@ -292,6 +292,21 @@ textarea {
     height: 50px;
     cursor: pointer;
 }
+#cerrar-sesion {
+  width: 7rem;
+  height: 3rem;
+  background-color: #1ab188; /* Mismo color verde que otros elementos */
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#cerrar-sesion:hover {
+  background-color: #179b77; /* Cambia a un tono ligeramente más oscuro al pasar el cursor */
+}
 
 
 

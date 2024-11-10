@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   let load 
   const cookieUser = document.cookie.slice(5)
 
-  if(!cookieUser) window.location.pathname = '/EP3/views/index.html';
+  if(!cookieUser) window.location.pathname = '/views/index.html';
   
   const {auth, user, ...data } = JSON.parse(cookieUser)
   
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   //Elimina la cookie y redireciona al index.html
   document.getElementById('cerrar-sesion').addEventListener('click', () => {
     document.cookie = "user=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    window.location.pathname = '/EP3/views/index.html';
+    window.location.pathname = '/views/index.html';
   })
 })
 
